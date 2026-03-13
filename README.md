@@ -10,9 +10,9 @@
 
 ## What is PhantomCrawl?
 
-PhantomCrawl is a Go-based web crawler built for developers who need to scrape the real web — not just static HTML. It uses a 4-layer escalation engine that adapts to whatever a site throws at it, from simple HTML to JS-heavy SPAs protected by enterprise anti-bot systems.
+PhantomCrawl is a Go-based web crawler built for developers who need to scrape the real web - not just static HTML. It uses a 4-layer escalation engine that adapts to whatever a site throws at it, from simple HTML to JS-heavy SPAs protected by enterprise anti-bot systems.
 
-It scraped Cloudflare.com — a site protected by Cloudflare — at depth 1, across 100+ pages, with zero blocks. All Layer 1.
+It scraped Cloudflare.com - a site protected by Cloudflare - at depth 1, across 100+ pages, with zero blocks. All Layer 1.
 
 ---
 
@@ -22,8 +22,8 @@ PhantomCrawl tries the cheapest, fastest method first and only escalates when ne
 
 | Layer | Method | Use Case |
 |-------|--------|----------|
-| **Layer 1** | Direct HTTP with TLS fingerprinting (utls HelloChrome_120) | Most of the web — SSR, static, Next.js, etc. |
-| **Layer 2** | Network hijacking — extracts embedded JSON, API endpoints, JSON-LD | SPAs that expose data in `window.__NEXT_DATA__` etc. |
+| **Layer 1** | Direct HTTP with TLS fingerprinting (utls HelloChrome_120) | Most of the web - SSR, static, Next.js, etc. |
+| **Layer 2** | Network hijacking - extracts embedded JSON, API endpoints, JSON-LD | SPAs that expose data in `window.__NEXT_DATA__` etc. |
 | **Layer 2.5** | Browserless REST API | Cloud-based JS rendering without local Chrome |
 | **Layer 3** | go-rod headless Chrome (auto-detected) | Full browser rendering for complex SPAs |
 
@@ -83,7 +83,7 @@ Output is saved to `~/phantomcrawl/scraped/` as JSON.
 
 ## Configuration
 
-Run `phantomcrawl init` to generate a `crawl.json` template, or use the [Config Generator UI](https://github.com/var-raphael/PhantomCrawl/blob/main/ui.html) — open it in any browser, fill the form, download your files.
+Run `phantomcrawl init` to generate a `crawl.json` template, or use the [Config Generator UI](https://github.com/var-raphael/PhantomCrawl/blob/main/ui.html) - open it in any browser, fill the form, download your files.
 
 ### Full Reference
 
@@ -186,7 +186,7 @@ scraped/
       cleaned.json  ← AI-cleaned text + structured data
 ```
 
-`cleaned.json` contains the AI-extracted text alongside links, images, emails, and metadata — everything you need in one file.
+`cleaned.json` contains the AI-extracted text alongside links, images, emails, and metadata - everything you need in one file.
 
 ---
 
@@ -207,17 +207,17 @@ PROXY_2=http://proxy2.example.com:8080
 }
 ```
 
-Proxies are tunneled at the TCP level through the utls TLS transport — not just HTTP-level proxying.
+Proxies are tunneled at the TCP level through the utls TLS transport - not just HTTP-level proxying.
 
 ---
 
-## Layer 3 — Headless Browser
+## Layer 3 - Headless Browser
 
 For JS-heavy SPAs that Layer 1 and 2 can't handle.
 
-**Chrome installed locally** — go-rod is used automatically. No config needed.
+**Chrome installed locally** - go-rod is used automatically. No config needed.
 
-**No Chrome (mobile, server)** — use [Browserless](https://browserless.io):
+**No Chrome (mobile, server)** - use [Browserless](https://browserless.io):
 
 ```env
 BROWSERLESS_KEY=your_key
@@ -243,7 +243,7 @@ phantomcrawl stats    # Show crawl statistics and URL records
 
 ### Resuming
 
-PhantomCrawl automatically resumes interrupted crawls. If AI cleaning hits a token quota mid-run, just run `phantomcrawl start` again without resetting — it skips already-crawled URLs and retries only the pending cleans.
+PhantomCrawl automatically resumes interrupted crawls. If AI cleaning hits a token quota mid-run, just run `phantomcrawl start` again without resetting - it skips already-crawled URLs and retries only the pending cleans.
 
 ---
 
@@ -268,7 +268,7 @@ print(data['metadata'])  # Page metadata
 
 ## License
 
-BSL (Business Source License) — free for personal and non-commercial use. See [LICENSE](LICENSE).
+BSL (Business Source License) - free for personal and non-commercial use. See [LICENSE](LICENSE).
 
 ---
 
@@ -276,13 +276,10 @@ BSL (Business Source License) — free for personal and non-commercial use. See 
 
 Built by **Raphael Samuel**, 18, Lagos, Nigeria.
 
-Self-taught. Started coding on a phone. No bootcamp, no degree, just code.
+Self-taught. No bootcamp, no degree, just code.
 
 - Portfolio: [var-raphael.vercel.app](https://var-raphael.vercel.app)
 - GitHub: [github.com/var-raphael](https://github.com/var-raphael)
-
-> *"The kid from Nigeria who built a better Firecrawl."*
-
 ---
 
 *If PhantomCrawl helped you, star the repo ⭐*
